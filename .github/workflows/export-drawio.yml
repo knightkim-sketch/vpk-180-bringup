@@ -25,9 +25,14 @@ jobs:
         with:
           path: doc/diagrams
           format: svg
-          output: doc/diagrams/svg
+          output: svg
           remove-page-suffix: true
           action-mode: all
+
+      - name: Debug - list generated files
+        run: |
+          echo "=== Workspace SVG files ==="
+          find . -name "*.svg" 2>/dev/null || echo "No SVG files found"
 
       - name: Commit and push exported SVG files
         uses: stefanzweifel/git-auto-commit-action@v5
