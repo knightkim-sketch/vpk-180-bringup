@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Export draw.io files to SVG
         uses: rlespinasse/drawio-export-action@v2
@@ -25,6 +27,7 @@ jobs:
           format: svg
           output: doc/diagrams/svg
           remove-page-suffix: true
+          action-mode: all
 
       - name: Commit and push exported SVG files
         uses: stefanzweifel/git-auto-commit-action@v5
