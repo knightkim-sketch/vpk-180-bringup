@@ -1,0 +1,129 @@
+<mxfile host="app.diagrams.net" modified="2026-05-31T00:00:00.000Z" agent="draw.io" version="21.0.0">
+  <diagram name="VPK180 Boot Flow" id="boot-flow-01">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="VPK180 Boot Sequence — Versal Premium (SD Boot)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="769" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 0: Power ON === -->
+        <mxCell id="s0" value="⚡ POWER ON&#xa;SW13 → ON&#xa;ATX 12V 공급" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="80" width="200" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 1: BootROM === -->
+        <mxCell id="s1" value="BootROM (PMC)&#xa;하드웨어 내장 펌웨어&#xa;부트 소스 결정 (SW1 = SD)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="185" width="200" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 2: PLM === -->
+        <mxCell id="s2" value="PLM&#xa;(Platform Loader &amp; Manager)&#xa;• SD에서 PDI 로드&#xa;• FPGA PL 비트스트림 적용&#xa;• 서브시스템 초기화" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="300" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- PDI annotation -->
+        <mxCell id="pdi_note" value="SD BOOT.BIN에서&#xa;PDI 읽기" style="text;html=1;strokeColor=none;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="320" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pdi" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d6b656;" edge="1" source="pdi_note" target="s2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 3: PSM FW === -->
+        <mxCell id="s3" value="PSM Firmware&#xa;(Platform System Manager)&#xa;• 전원 레일 관리&#xa;• 열 관리&#xa;• 시스템 이벤트 처리" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="440" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 4: TF-A (ATF) === -->
+        <mxCell id="s4" value="TF-A / ATF&#xa;(ARM Trusted Firmware)&#xa;• EL3 Secure Monitor&#xa;• PSCI 전원 관리 API&#xa;• Secure/Non-Secure 분리" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="580" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 5: U-Boot SPL === -->
+        <mxCell id="s5" value="U-Boot SPL&#xa;• LPDDR4 초기화&#xa;  (3채널 12GB)&#xa;• Full U-Boot 로드" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="580" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 6: U-Boot === -->
+        <mxCell id="s6" value="U-Boot (Full)&#xa;• boot.scr 실행&#xa;• image.ub 로드&#xa;  (SD FAT32 파티션)&#xa;• 환경변수 처리" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="720" width="200" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- boot.scr annotation -->
+        <mxCell id="scr_note" value="boot.scr 스크립트:&#xa;fatload mmc 0 $loadaddr image.ub&#xa;bootm $loadaddr" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="20" y="735" width="160" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 7: Linux Kernel === -->
+        <mxCell id="s7" value="Linux Kernel&#xa;(PetaLinux 2025.2)&#xa;• 디바이스 트리 파싱&#xa;• 드라이버 초기화&#xa;• PL 장치 감지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="860" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- === STAGE 8: rootfs / User Space === -->
+        <mxCell id="s8" value="Rootfs / User Space&#xa;• init / systemd&#xa;• 드라이버 로딩&#xa;• 사용자 앱 실행&#xa;• UART 로그인 쉘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1000" width="200" height="105" as="geometry" />
+        </mxCell>
+
+        <!-- SD Card -->
+        <mxCell id="sd_card" value="microSD Card&#xa;├── FAT32: BOOT.BIN&#xa;│            boot.scr&#xa;│            image.ub&#xa;└── EXT4:  rootfs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="860" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- UART console annotation -->
+        <mxCell id="uart_note" value="UART 콘솔&#xa;J369 USB-C&#xa;115200 8N1&#xa;/dev/ttyUSB1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1000" width="150" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ========== Edges ========== -->
+        <mxCell id="e01" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="s0" target="s1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="s1" target="s2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e23" value="동시 기동" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="s2" target="s3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="s3" target="s4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TF-A -> U-Boot SPL (via EL2 handoff) -->
+        <mxCell id="e45a" value="EL2 핸드오프" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="s4" target="s5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="s5" target="s6" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- U-Boot -> Kernel -->
+        <mxCell id="e67" value="bootm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="s6" target="s7" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" edge="1" source="s7" target="s8" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- SD -> kernel load -->
+        <mxCell id="e_sd_kern" value="image.ub 로드" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#666666;" edge="1" source="sd_card" target="s7" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- rootfs -> UART -->
+        <mxCell id="e_uart" value="로그인 프롬프트" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;" edge="1" source="s8" target="uart_note" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

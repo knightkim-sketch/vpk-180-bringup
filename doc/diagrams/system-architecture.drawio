@@ -1,0 +1,242 @@
+<mxfile host="app.diagrams.net" modified="2026-05-31T00:00:00.000Z" agent="draw.io" version="21.0.0">
+  <diagram name="VPK180 System Architecture" id="sys-arch-01">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========== VPK180 Board Boundary ========== -->
+        <mxCell id="board" value="VPK180 Evaluation Board" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;fontStyle=1;verticalAlign=top;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1600" height="1100" as="geometry" />
+        </mxCell>
+
+        <!-- ========== XCVP1802 Versal Premium SoC ========== -->
+        <mxCell id="vp1802" value="XCVP1802 — Versal Premium SoC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;verticalAlign=top;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="980" height="680" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Processing System (PS) ===== -->
+        <mxCell id="ps" value="Processing System (PS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="90" y="130" width="300" height="580" as="geometry" />
+        </mxCell>
+
+        <!-- APU -->
+        <mxCell id="apu" value="APU&#xa;ARM Cortex-A72 ×2&#xa;최대 1.2 GHz" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="175" width="255" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- RPU -->
+        <mxCell id="rpu" value="RPU&#xa;ARM Cortex-R5F ×2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="110" y="270" width="255" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- PMC -->
+        <mxCell id="pmc" value="PMC&#xa;(Platform Management Controller)&#xa;PLM + PSM Firmware" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="110" y="355" width="255" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- MIO Peripherals -->
+        <mxCell id="mio" value="MIO Peripherals&#xa;UART0 / SD1 / GEM0&#xa;USB0 / QSPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="110" y="450" width="255" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- XPIO LPDDR4 Controller -->
+        <mxCell id="xpio" value="XPIO — LPDDR4 Controller&#xa;Banks 700–708 (3채널)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="110" y="545" width="255" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Security / Crypto -->
+        <mxCell id="sec" value="Security Module&#xa;RSA / AES / SHA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="110" y="630" width="255" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ===== NoC ===== -->
+        <mxCell id="noc" value="Network-on-Chip (NoC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="130" width="560" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ===== PL (Programmable Logic) ===== -->
+        <mxCell id="pl" value="Programmable Logic (PL)&#xa;User FPGA Fabric&#xa;CLB / BRAM / DSP58 / UltraRAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="215" width="270" height="155" as="geometry" />
+        </mxCell>
+
+        <!-- PL Resources -->
+        <mxCell id="pl_res" value="LUT ~2.07M&#xa;BRAM36 1,872&#xa;DSP58 3,840&#xa;UltraRAM 960" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=9;align=left;" vertex="1" parent="1">
+          <mxGeometry x="440" y="260" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ===== AI Engine ML ===== -->
+        <mxCell id="aie" value="AI Engine ML Array" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#ffffff;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="390" width="270" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ===== GT Transceivers ===== -->
+        <mxCell id="gtyp" value="28× GTYP Transceivers&#xa;(7 quads)&#xa;18개 uncommitted + 8 FMC + 2 HSDP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="215" width="290" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gtm" value="140× GTM Transceivers&#xa;(35 quads)&#xa;QSFP-DD×6 / OSFP×8 / SFP-DD×4 / SMA×1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="335" width="290" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ===== AXI/DMA Interconnect ===== -->
+        <mxCell id="dma" value="DMA / AXI Interconnect&#xa;AXI4 / AXI4-Lite / AXI4-Stream" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="470" width="560" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Clock / Reset ===== -->
+        <mxCell id="clk" value="Clock / Reset&#xa;200MHz Si570 (LPDDR4)&#xa;156.25MHz RC21008A (GT)&#xa;8A34001 (IEEE-1588/eCPRI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor:#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="550" width="560" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Debug (HSDP) inside VP1802 ===== -->
+        <mxCell id="hsdp" value="HSDP&#xa;(High-Speed Debug Port)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="645" width="270" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ========== System Controller ========== -->
+        <mxCell id="sysctlr" value="System Controller&#xa;XCZU4EG (Zynq UltraScale+ MPSoC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;verticalAlign=top;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="80" width="480" height="250" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sysctlr_fn" value="• 클럭 관리 (Si570 주파수 설정)&#xa;• 전원 모니터링 (PMBus, INA226)&#xa;• FMC VADJ 설정 (기본 1.5V)&#xa;• Fan 제어 (PWM/TACH)&#xa;• Web UI (전원/상태 모니터링)&#xa;• eMMC 스토리지&#xa;• JTAG 체인 관리" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="130" width="460" height="185" as="geometry" />
+        </mxCell>
+
+        <!-- ========== LPDDR4 Memory ========== -->
+        <mxCell id="lpddr4_label" value="LPDDR4 Memory (총 12 GB)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=12;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="60" y="800" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lpddr4_0" value="LPDDR4 CH0&#xa;4 GB (2×32-bit)&#xa;Banks 700-702" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="835" width="200" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lpddr4_1" value="LPDDR4 CH1&#xa;4 GB (2×32-bit)&#xa;Banks 703-705" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="835" width="200" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lpddr4_2" value="LPDDR4 CH2&#xa;4 GB (2×32-bit)&#xa;Banks 706-708" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="835" width="200" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ========== Interfaces / Connectors ========== -->
+        <mxCell id="conn_label" value="인터페이스 / 커넥터" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=12;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="370" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- J369 USB-C -->
+        <mxCell id="usbc" value="J369 — USB-C&#xa;(JTAG + UART)&#xa;FT4232HL 브리지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="405" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- J36 JTAG Pod -->
+        <mxCell id="jtag_pod" value="J36 — JTAG Pod&#xa;2mm 2×7 Header&#xa;외부 디버거 연결" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="405" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- microSD -->
+        <mxCell id="sd" value="microSD Slot&#xa;(J301)&#xa;부팅 / 스토리지" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="505" width="220" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- GEM0 Ethernet -->
+        <mxCell id="eth" value="GEM0 — 1G Ethernet&#xa;RJ-45 (RGMII)&#xa;MIO26~45" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="505" width="220" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- FMC+ -->
+        <mxCell id="fmc" value="FMC+ (FMCP1)&#xa;LA[00:33], DP[0:3]&#xa;VADJ = 1.5V (programmable)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="600" width="460" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- QSFP/OSFP optical -->
+        <mxCell id="optical" value="고속 광 인터페이스&#xa;QSFP-DD×6 / OSFP×8 / SFP-DD×4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="695" width="460" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- ATX Power -->
+        <mxCell id="power" value="ATX 12V (6+2 핀) — 메인 전원&#xa;SW13: 전원 ON/OFF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="780" width="460" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- FTDI Bridge -->
+        <mxCell id="ftdi" value="FT4232HL (U20)&#xa;USB-JTAG/UART Bridge&#xa;Port A/B: JTAG | Port C/D: UART" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="875" width="460" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ========== Connections (Edges) ========== -->
+
+        <!-- PS <-> NoC -->
+        <mxCell id="e_ps_noc" value="AXI4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ps" target="noc" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- NoC <-> PL -->
+        <mxCell id="e_noc_pl" value="" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="noc" target="pl" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- NoC <-> DMA -->
+        <mxCell id="e_noc_dma" value="" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="noc" target="dma" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- XPIO <-> LPDDR4 CH0/1/2 -->
+        <mxCell id="e_xpio_ddr0" value="LPDDR4" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="xpio" target="lpddr4_0" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_xpio_ddr1" value="" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="xpio" target="lpddr4_1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_xpio_ddr2" value="" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="xpio" target="lpddr4_2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- MIO <-> SD, ETH -->
+        <mxCell id="e_mio_sd" value="" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mio" target="sd" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_mio_eth" value="" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mio" target="eth" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- GTYP -> FMC -->
+        <mxCell id="e_gtyp_fmc" value="GT lanes" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="gtyp" target="fmc" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- GTM -> Optical -->
+        <mxCell id="e_gtm_opt" value="100G+" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="gtm" target="optical" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- HSDP <-> SysCtlr -->
+        <mxCell id="e_hsdp_sc" value="HSDP" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d79b00;" edge="1" source="hsdp" target="sysctlr" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- SysCtlr -> VP1802 JTAG -->
+        <mxCell id="e_sc_vp" value="JTAG TAP" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d79b00;" edge="1" source="sysctlr" target="pmc" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- J369 USB-C -> FTDI -->
+        <mxCell id="e_usbc_ftdi" value="USB 2.0" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="usbc" target="ftdi" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- FTDI -> SysCtlr JTAG -->
+        <mxCell id="e_ftdi_sc" value="JTAG" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ftdi" target="sysctlr" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- FTDI -> MIO UART -->
+        <mxCell id="e_ftdi_uart" value="UART" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="ftdi" target="mio" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

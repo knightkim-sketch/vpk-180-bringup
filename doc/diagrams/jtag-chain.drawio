@@ -1,0 +1,144 @@
+<mxfile host="app.diagrams.net" modified="2026-05-31T00:00:00.000Z" agent="draw.io" version="21.0.0">
+  <diagram name="VPK180 JTAG Chain" id="jtag-chain-01">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="VPK180 JTAG Debug Chain" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="20" width="969" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ========== Path A: USB-C J369 (Primary) ========== -->
+        <mxCell id="path_a_label" value="경로 A — 온보드 FT4232HL (J369 USB-C) — 기본 권장" style="text;html=1;strokeColor=none;fillColor=#dae8fc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="600" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Host PC -->
+        <mxCell id="pc_a" value="🖥️ Host PC&#xa;Vivado 2025.2&#xa;hw_server&#xa;&#xa;Linux: /dev/ttyUSB0 (JTAG)&#xa;       /dev/ttyUSB1 (UART)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- USB-C cable -->
+        <mxCell id="cable_a" value="USB-C 케이블&#xa;J369" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;rotation=-0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="175" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- FTDI FT4232HL -->
+        <mxCell id="ftdi_a" value="FT4232HL (U20)&#xa;USB-JTAG/UART Bridge&#xa;&#xa;Port A: JTAG TDI/TDO/TCK/TMS&#xa;Port B: JTAG (chained)&#xa;Port C/D: UART (MIO42/43)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="130" width="260" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- J37 Jumper (MUX) -->
+        <mxCell id="j37" value="J37 점퍼&#xa;핀 2-3: FT4232 선택&#xa;(기본값)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="155" width="130" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- JTAG Chain: XCZU4EG -->
+        <mxCell id="zu4eg" value="XCZU4EG&#xa;System Controller&#xa;(JTAG Chain #1)&#xa;&#xa;TAP ID: 0x147B81093" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="880" y="130" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- JTAG Chain: XCVP1802 -->
+        <mxCell id="vp1802_jtag" value="XCVP1802&#xa;Versal Premium&#xa;(JTAG Chain #2)&#xa;&#xa;TAP ID: Versal JTAG&#xa;APU / RPU / PL 접근" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="310" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ========== Path B: External JTAG Pod (J36) ========== -->
+        <mxCell id="path_b_label" value="경로 B — 외부 JTAG Pod (J36) — SmartLynq+ / JTAG-HS3" style="text;html=1;strokeColor=none;fillColor=#d5e8d4;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="490" width="600" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- SmartLynq+ -->
+        <mxCell id="smartlynq" value="SmartLynq+ Module&#xa;(HW-SMARTLYNQ-PLUS-G)&#xa;&#xa;• HSDP 최대 10 Gbps&#xa;• 트레이스 메모리 14GB&#xa;• USB 3.0 / Ethernet 연결" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="230" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- SmartLynq Ethernet to PC -->
+        <mxCell id="eth_note" value="Ethernet&#xa;IP: 10.0.0.2&#xa;hw_server port 3121" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="680" width="150" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- J36 Header -->
+        <mxCell id="j36" value="J36 커넥터&#xa;2mm 2×7 shrouded&#xa;리본 케이블" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="560" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- J37 for path B -->
+        <mxCell id="j37b" value="J37 점퍼&#xa;핀 1-2: 외부 Pod 선택" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="655" y="565" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- HSDP Path (USB-C direct to SmartLynq) -->
+        <mxCell id="hsdp_path" value="HSDP 경로 (SmartLynq+ HSDP 모드)&#xa;SmartLynq+ USB-C → VPK180 J369 직접 연결&#xa;Ethernet으로 hw_server 접근 (10.0.0.2:3121)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="680" width="420" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ========== Software Layer ========== -->
+        <mxCell id="sw_label" value="소프트웨어 레이어" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="780" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Vivado Hardware Manager -->
+        <mxCell id="vivado_hw" value="Vivado Hardware Manager&#xa;• Auto Connect&#xa;• Program Device (PDI)&#xa;• ILA Debug" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="820" width="200" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- XSDB -->
+        <mxCell id="xsdb" value="XSDB (Xilinx System Debugger)&#xa;• Tcl 기반 디버거&#xa;• A72 / R5F 코어 제어&#xa;• 메모리 읽기/쓰기&#xa;• 레지스터 덤프" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="820" width="200" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- Vitis IDE -->
+        <mxCell id="vitis" value="Vitis IDE&#xa;• A72 / R5F 소프트웨어 디버그&#xa;• 브레이크포인트 / 워치포인트&#xa;• 멀티코어 동시 디버그" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="820" width="200" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- petalinux-boot -->
+        <mxCell id="petaboot" value="petalinux-boot --jtag&#xa;• JTAG으로 커널 부팅&#xa;• SD 카드 없이 개발 편의" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="820" width="200" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- ========== Edges ========== -->
+
+        <!-- Path A edges -->
+        <mxCell id="e_pc_cable" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="pc_a" target="cable_a" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cable_ftdi" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="cable_a" target="ftdi_a" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ftdi_j37" value="JTAG" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="ftdi_a" target="j37" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_j37_zu4eg" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="j37" target="zu4eg" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_zu4eg_vp" value="JTAG TAP chain" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="zu4eg" target="vp1802_jtag" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Path B edges -->
+        <mxCell id="e_sl_eth" value="Ethernet" style="edgeStyle=orthogonalEdgeStyle;dashed=1;" edge="1" source="smartlynq" target="eth_note" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_sl_j36" value="14-pin JTAG" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="smartlynq" target="j36" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_j36_j37b" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="j36" target="j37b" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_j37b_vp" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="j37b" target="vp1802_jtag" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- SW layer connections -->
+        <mxCell id="e_vivado_pc" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d6b656;" edge="1" source="vivado_hw" target="pc_a" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
